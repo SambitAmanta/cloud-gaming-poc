@@ -11,7 +11,7 @@ GST_COMMAND_TEMPLATE = (
     '! video/x-raw,format=I420,width=1920,height=1080,framerate=30/1 '
     '! x264enc tune=zerolatency bitrate=5000 speed-preset=superfast '
     '! h264parse ! queue ! mux. '
-    'wasapi2src ! audioconvert ! audioresample ! avenc_aac bitrate=128000 '
+    'wasapisrc loopback=true ! audioconvert ! audioresample ! avenc_aac bitrate=128000 '
     '! aacparse ! queue ! mux. '
     'mp4mux name=mux ! filesink location=game_capture.mp4'
 )
